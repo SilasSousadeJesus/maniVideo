@@ -7,9 +7,9 @@ app.use(express.json());
 app.use(cors());
 
 
-const routes = require("./routes");
+const routes = require("./routes/videoRoutes");
 app.use('/', routes);
 
 app.listen(process.env.PORT || 3000, ()=>{
-    console.log("connected to port 3000")
+    console.log("connected to port 3000");
 });
