@@ -1,8 +1,7 @@
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 
-
-exports.videoDownload = (urlYt, qualityVideo) => {  
+exports.videoDownload = async (urlYt, qualityVideo) => {  
     // itag container quality codecs                 bitrate  audio bitrate
     // 18   mp4       360p    avc1.42001E, mp4a.40.2 696.66KB 96KB
     // 137  mp4       1080p   avc1.640028            4.53MB
@@ -14,12 +13,13 @@ exports.videoDownload = (urlYt, qualityVideo) => {
     // 140  mp4               mp4a.40.2                       128KB
 
     ytdl(urlYt, { quality: qualityVideo }).pipe(fs.createWriteStream('video.mp4'))
+    return {message: "download realizado com sucesso!"}
 
 }
 
 exports.mp3fromVideo = async (urlYt) => {
 
     ytdl(urlYt, { filter: format => format.container === 'mp4' }, 'audioonly').pipe(fs.createWriteStream('video.mp3'));
-
+    return {message: "download realizado com sucesso!"}
 }
 
