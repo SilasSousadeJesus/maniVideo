@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from "../services/services.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  videoInformation:any = {
+    urlYt:'',
+    qualityVideo:''
+  }
+
+  value:any = ''
+
+  constructor(private service: ServicesService) { }
 
   ngOnInit(): void {
   }
+
+  video(){
+    this.service.downloadvideo(this.videoInformation).subscribe(res=>{
+
+    }, err=>console.log)
+  }
+
 
 }
