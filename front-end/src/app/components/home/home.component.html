@@ -5,20 +5,24 @@
 </p>
 
 
-<div layout="row"       layout-align="center center" flex>
-  <mat-form-field class="example-form-field" appearance="fill"  >
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+<mat-card fxLayout="row" fxLayoutAlign="center center" class="title"><h1>Baixe seu video preferido</h1></mat-card>
+
+
+<div fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
+<mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>Insira a URL do video</mat-label>
+  <input matInput type="text" [(ngModel)]="value">
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<button mat-button color="primary" class="btnUlr">Buscar </button>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+      <mat-option value="three">three option</mat-option>
+    </mat-select>
+  </mat-form-field> -->
 </div >
-
-
-<p>
-  <mat-toolbar>
-    <span>FOOTER</span>
-  </mat-toolbar>
-</p>
-
