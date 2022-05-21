@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   })
 
-  value:any = ''
+  ulrLink:String = ''
 
   constructor(private service: ServicesService,
               private formBuilder: FormBuilder

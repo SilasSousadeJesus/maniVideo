@@ -15,8 +15,8 @@
       <form  [formGroup]="formVideo" fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
           <mat-form-field class="example-form-field" appearance="fill" >
             <mat-label>Insira a URL do video</mat-label>
-            <input matInput type="text" [(ngModel)]="value" formControlName="urlYt">
-            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <input matInput type="text" [(ngModel)]="ulrLink" formControlName="urlYt" name="ulrLink">
+            <button *ngIf="ulrLink" matSuffix mat-icon-button aria-label="Clear" (click)="ulrLink=''" >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
@@ -26,10 +26,14 @@
       </form>
 
       <div fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngIf="value">
+        <ng-container *ngIf="ulrLink"  >
 
           <mat-card class="example-card">
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <video width="400" controls>
+              <source src="" type="video/mp4">
+              <source src="" type="video/ogg">
+              Your browser does not support HTML video.
+            </video>
             <mat-card-actions>
               <button mat-button>LIKE</button>
               <button mat-button>SHARE</button>
