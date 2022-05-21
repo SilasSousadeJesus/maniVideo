@@ -1,9 +1,3 @@
-<p>
-  <mat-toolbar>
-    <span>ManiVideo</span>
-  </mat-toolbar>
-</p>
-
 <h1 fxLayout="row" fxLayoutAlign="center center" class="title">Baixe seu video preferido</h1>
 
   <mat-tab-group animationDuration="0ms" >
@@ -12,34 +6,39 @@
 
       <!-- formulario de video -->
     <mat-tab label="Baixar Video">
-      <form  [formGroup]="formVideo" fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
+      <form  fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
           <mat-form-field class="example-form-field" appearance="fill" >
-            <mat-label>Insira a URL do video</mat-label>
-            <input matInput type="text" [(ngModel)]="ulrLink" formControlName="urlYt" name="ulrLink">
-            <button *ngIf="ulrLink" matSuffix mat-icon-button aria-label="Clear" (click)="ulrLink=''" >
+            <mat-label>Insira o ID do video</mat-label>
+            <input matInput type="text" [(ngModel)]="videoId" name="ulrLink">
+            <button *ngIf="videoId" matSuffix mat-icon-button aria-label="Clear" (click)="videoId=''" >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
 
-          <button mat-button color="primary" class="btnUlr">Buscar</button>
-
       </form>
 
       <div fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngIf="ulrLink"  >
-
-          <mat-card class="example-card">
-            <video width="400" controls>
-              <source src="" type="video/mp4">
-              <source src="" type="video/ogg">
-              Your browser does not support HTML video.
-            </video>
-            <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
-          </mat-card>
-
+        <ng-container *ngIf="videoId"  >
+          <form [formGroup]="formVideo" >
+            <mat-card class="example-card">
+              <iframe width="460" height="315" [src]='securefullurl()'  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <mat-card>
+                <mat-card-title>Escolha Qualidade do video</mat-card-title>
+                <input matInput type="text" formControlName="urlYt" name="ulr" [value]="videoId" class="inputUrlYt">
+                <mat-card-actions fxLayout="row" fxLayoutAlign="space-evenly center">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select disableRipple>
+                      <mat-option value="18" >mp4 360p</mat-option>
+                      <mat-option value="135">mp4 480p</mat-option>
+                      <mat-option value="136">mp4 720p</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button mat-raised-button class="btnUlr">Baixar</button>
+                </mat-card-actions>
+              </mat-card>
+            </mat-card>
+          </form>
         </ng-container>
       </div>
     </mat-tab>
