@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from "../services/services.service";
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +9,30 @@ import { ServicesService } from "../services/services.service";
 })
 export class HomeComponent implements OnInit {
 
-  videoInformation:any = {
-    urlYt:'',
-    qualityVideo:''
-  }
+  formVideo = this.formBuilder.group({
+
+    urlYt:[''],
+    qualityVideo:['']
+
+  })
+
+  formMP3 = this.formBuilder.group({
+
+    urlYt:['']
+
+  })
 
   value:any = ''
 
-  constructor(private service: ServicesService) { }
+  constructor(private service: ServicesService,
+              private formBuilder: FormBuilder
+              ) { }
 
   ngOnInit(): void {
   }
 
   video(){
-    this.service.downloadvideo(this.videoInformation).subscribe(res=>{
+    this.service.downloadvideo(this.formVideo.value).subscribe(res=>{
 
     }, err=>console.log)
   }

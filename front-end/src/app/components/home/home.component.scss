@@ -8,8 +8,9 @@
 
 .urlContainer{
   height: 300px;
-  width: 50%;
+  width: 45%;
   margin: 0 auto;
+  margin-top: -90px;
 }
 
 .btnUlr{
@@ -20,5 +21,16 @@
 }
 
 .title{
-  margin-top: -14px;
+  margin-top: 15px;
+  margin-bottom:-15px;
 }
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-top: -110px;
+}
+

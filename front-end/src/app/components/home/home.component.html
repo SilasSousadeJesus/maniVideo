@@ -4,25 +4,48 @@
   </mat-toolbar>
 </p>
 
+<h1 fxLayout="row" fxLayoutAlign="center center" class="title">Baixe seu video preferido</h1>
 
-<mat-card fxLayout="row" fxLayoutAlign="center center" class="title"><h1>Baixe seu video preferido</h1></mat-card>
+  <mat-tab-group animationDuration="0ms" >
+    <!-- instruções -->
+    <mat-tab label="Instruções de uso"></mat-tab>
+
+      <!-- formulario de video -->
+    <mat-tab label="Baixar Video">
+      <form  [formGroup]="formVideo" fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
+          <mat-form-field class="example-form-field" appearance="fill" >
+            <mat-label>Insira a URL do video</mat-label>
+            <input matInput type="text" [(ngModel)]="value" formControlName="urlYt">
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <button mat-button color="primary" class="btnUlr">Buscar</button>
+
+      </form>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngIf="value">
+
+          <mat-card class="example-card">
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+
+        </ng-container>
+      </div>
+    </mat-tab>
+
+     <!-- formulario de mp3 -->
+    <mat-tab label="Converter para MP3"></mat-tab>
+
+  </mat-tab-group>
 
 
-<div fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
-<mat-form-field class="example-form-field" appearance="fill">
-  <mat-label>Insira a URL do video</mat-label>
-  <input matInput type="text" [(ngModel)]="value">
-  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-<button mat-button color="primary" class="btnUlr">Buscar </button>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
-      <mat-option value="three">three option</mat-option>
-    </mat-select>
-  </mat-form-field> -->
-</div >
+
+
+
