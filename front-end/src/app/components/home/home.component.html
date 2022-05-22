@@ -6,7 +6,7 @@
 
       <!-- formulario de video -->
     <mat-tab label="Baixar Video">
-      <form  fxLayout="row" fxLayoutAlign="center center" class="urlContainer">
+      <form  fxLayout="row" fxLayoutAlign="center center" class="urlContainer"  >
           <mat-form-field class="example-form-field" appearance="fill" >
             <mat-label>Insira o ID do video</mat-label>
             <input matInput type="text" [(ngModel)]="videoId" name="ulrLink">
@@ -18,9 +18,9 @@
 
       <div fxLayout="row" fxLayoutAlign="center center">
         <ng-container *ngIf="videoId"  >
-       <form [formGroup]="formVideo" >
+       <form [formGroup]="formVideo" (submit)="video()">
             <mat-card class="example-card">
-              <iframe width="460" height="315" [src]='securefullurl()' id="inneriframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="460" height="315" [src]='securefullurlview()' id="inneriframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <mat-card>
                 <mat-card-title>Escolha Qualidade do video</mat-card-title>
                 <input matInput type="text" formControlName="urlYt"  name="urlYt" class="inputUrlYt">
@@ -33,7 +33,7 @@
                       <mat-option value="136">mp4 720p</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <button mat-raised-button class="btnUlr" (click)="saveForm()">Baixar</button>
+                  <button mat-raised-button class="btnUlr" type="submit">Baixar</button>
                 </mat-card-actions>
               </mat-card>
             </mat-card>
