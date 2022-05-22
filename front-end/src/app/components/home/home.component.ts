@@ -24,12 +24,7 @@ export class HomeComponent implements OnInit {
   })
 
   videoId:any = '';
-  fullUrl: string | null = '';
-
-
-
-
-
+  fullUrl: string | null  = '';
 
   constructor(private service: ServicesService,
               private formBuilder: FormBuilder,
@@ -54,5 +49,7 @@ export class HomeComponent implements OnInit {
     console.log(this.formVideo.value)
     console.log(this.fullUrl)
   }
+
+  // https://www.youtube.com/watch?v=letmVxvyvig
 
 }

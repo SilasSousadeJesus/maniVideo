@@ -21,7 +21,7 @@
         <ng-container *ngIf="videoId"  >
        <form [formGroup]="formVideo" >
             <mat-card class="example-card">
-              <iframe width="460" height="315" [src]='securefullurl()'  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="460" height="315" [src]='securefullurl()' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <mat-card>
                 <mat-card-title>Escolha Qualidade do video</mat-card-title>
                 <input matInput type="text" formControlName="urlYt" [(ngModel)]="fullUrl" name="urlYt" [value]="fullUrl" class="inputUrlYt">
