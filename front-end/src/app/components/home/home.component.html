@@ -19,22 +19,22 @@
 
       <div fxLayout="row" fxLayoutAlign="center center">
         <ng-container *ngIf="videoId"  >
-          <form [formGroup]="formVideo" >
+       <form [formGroup]="formVideo" >
             <mat-card class="example-card">
               <iframe width="460" height="315" [src]='securefullurl()'  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <mat-card>
                 <mat-card-title>Escolha Qualidade do video</mat-card-title>
-                <input matInput type="text" formControlName="urlYt" name="ulr" [value]="videoId" class="inputUrlYt">
+                <input matInput type="text" formControlName="urlYt" [(ngModel)]="fullUrl" name="urlYt" [value]="fullUrl" class="inputUrlYt">
                 <mat-card-actions fxLayout="row" fxLayoutAlign="space-evenly center">
                   <mat-form-field appearance="fill">
-                    <mat-label>Select an option</mat-label>
-                    <mat-select disableRipple>
+                    <mat-label>Escolha uma das opções</mat-label>
+                    <mat-select disableRipple formControlName="qualityVideo" name="qualityVideo">
                       <mat-option value="18" >mp4 360p</mat-option>
                       <mat-option value="135">mp4 480p</mat-option>
                       <mat-option value="136">mp4 720p</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <button mat-raised-button class="btnUlr">Baixar</button>
+                  <button mat-raised-button class="btnUlr" (click)="saveForm()">Baixar</button>
                 </mat-card-actions>
               </mat-card>
             </mat-card>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from "../services/services.service";
 import { FormBuilder } from '@angular/forms';
-import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
+import { DomSanitizer, SafeUrl, SafeHtml, SafeValue } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-home',
@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit {
   })
 
   videoId:any = '';
-  fullUrl: SafeUrl = '';
+  fullUrl: string | null = '';
+
+
 
 
 
@@ -43,10 +45,14 @@ export class HomeComponent implements OnInit {
     }, err=>console.log)
   }
 
-
   securefullurl(){
-    this.fullUrl = this._sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.videoId}`)
+    this.fullUrl = this._sanitizer.sanitize(4, `https://www.youtube.com/embed/${this.videoId}`)
     return this.fullUrl
+  }
+
+  saveForm(){
+    console.log(this.formVideo.value)
+    console.log(this.fullUrl)
   }
 
 }
