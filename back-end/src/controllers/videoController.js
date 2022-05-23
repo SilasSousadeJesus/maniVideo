@@ -8,7 +8,7 @@ module.exports = class videoController {
     static async videoGet(req, res){ 
 
         try {
-            return res.json( await  videoRepository.videoDownload(req.body.urlYt, req.body.qualityVideo));
+            return res.json( await  videoRepository.videoDownload(req.body.urlYt, req.body.id, req.body.qualityVideo));
         } catch (error) {
             console.log(error);
         }
