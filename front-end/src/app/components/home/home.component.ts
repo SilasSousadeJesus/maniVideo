@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from "../services/services.service";
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
-
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,9 +10,12 @@ import { DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 })
 export class HomeComponent implements OnInit {
 
+  durationInSeconds = 5;
+
   formVideo = this.formBuilder.group({
 
     urlYt:['', Validators.required],
+    id:['', Validators.required],
     qualityVideo:['', Validators.required]
 
   })
@@ -30,12 +32,19 @@ export class HomeComponent implements OnInit {
 
   constructor(private service: ServicesService,
               private formBuilder: FormBuilder,
-              private _sanitizer: DomSanitizer
+              private _sanitizer: DomSanitizer,
+              private _snackBar: MatSnackBar
+
               ) { }
 
   ngOnInit(): void {
   }
 
+  popUp(message:string){
+      this._snackBar.open(message, 'Ok', {
+        duration: 2500
+      })
+  }
 
   securefullurl(){
     this.fullUrl = this._sanitizer.sanitize(4, `https://www.youtube.com/embed/${this.videoId}`)
@@ -47,12 +56,14 @@ export class HomeComponent implements OnInit {
     return this.fullUrlview
   }
 
-
   video(){
     this.formVideo.controls['urlYt'].setValue(this.securefullurl())
+    this.formVideo.controls['id'].setValue(this.videoId)
+
    this.service.downloadvideo(this.formVideo.value).subscribe(res=>{
-      console.log(res, this.formVideo.value)
-   }, err=>console.log)
+      console.log(this.formVideo.value)
+      this.popUp("O Download foi iniciado!")
+   }, err=>console.log(err))
  }
 
 
