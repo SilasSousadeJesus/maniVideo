@@ -24,6 +24,7 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.0.0",
     "nodemon": "^2.0.16",
+    "uuid": "^8.3.2",
     "ytdl-core": "^4.11.0"
   }
 }

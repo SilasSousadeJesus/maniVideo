@@ -3,14 +3,10 @@ const fs = require('fs');
 const ffmpeg = require('ffmpeg-static');
 const cp = require('child_process');
 const readline = require('readline');
-const path = require('path');
+const { v4: uuidv4 } = require('uuid');
 
 exports.videoDownload = async (urlYt, id, qualityVideo) => {  
-    
-    
-
-    const videoInfor = this.getInfor(id);
-
+    const videoName = uuidv4();
     const ref = urlYt;
     const tracker = {
         start: Date.now(),
@@ -62,7 +58,7 @@ exports.videoDownload = async (urlYt, id, qualityVideo) => {
             // Keep encoding
             '-c:v', 'copy',
             // Define output file
-            `${videoInfor}.mp4`,
+            `${videoName}.mp4`,
           ], {
             windowsHide: true,
             stdio: [
@@ -106,18 +102,4 @@ exports.mp3fromVideo = async (urlYt) => {
     ytdl(urlYt, { filter: format => format.container === 'mp4' }, 'audioonly').pipe(fs.createWriteStream('video.mp3'));
 
     return {message: "download realizado com sucesso!"};
-}
-
-exports.getInfor = async (id) =>{
-  const filepath = path.resolve(__dirname, 'info.json');
- await ytdl.getInfo(id).then(info => {
-   const json = JSON.stringify(info, null, 2)
-          .replace(/(ip(?:=|%3D|\/))((?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)|[0-9a-f]{1,4}(?:(?::|%3A)[0-9a-f]{1,4}){7})/ig, '$10.0.0.0');
-        fs.writeFile(filepath, json, err2 => {
-          if (err2) throw err2;
-        });
-      });
-    const info = require("./info.json");
-    const videoinfor = info.videoDetails.title
-    return videoinfor
 }
