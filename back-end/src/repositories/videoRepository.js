@@ -4,6 +4,8 @@ const ffmpeg = require('ffmpeg-static');
 const cp = require('child_process');
 const readline = require('readline');
 const { v4: uuidv4 } = require('uuid');
+const path = require('path');
+const { basename, resolve } = require('path');
 
 exports.videoDownload = async (urlYt, id, qualityVideo) => {  
     const videoName = uuidv4();
@@ -27,8 +29,8 @@ exports.videoDownload = async (urlYt, id, qualityVideo) => {
 
         let progressbarHandle = null;
         const progressbarInterval = 1000;
-        const showProgress = () => {
-        readline.cursorTo(process.stdout, 0);
+        const showProgress = async () => {
+       readline.cursorTo(process.stdout, 0);
         const toMB = i => (i / 1024 / 1024).toFixed(2);
 
         process.stdout.write(`Audio  | ${(tracker.audio.downloaded / tracker.audio.total * 100).toFixed(2)}% processed `);
@@ -77,7 +79,7 @@ exports.videoDownload = async (urlYt, id, qualityVideo) => {
           
           // Link streams
           // FFmpeg creates the transformer streams and we just have to insert / read data
-          ffmpegProcess.stdio[3].on('data', chunk => {
+           ffmpegProcess.stdio[3].on('data', async chunk => {
             // Start the progress bar
             if (!progressbarHandle) progressbarHandle = setInterval(showProgress, progressbarInterval);
             // Parse the param=value list returned by ffmpeg
@@ -98,8 +100,7 @@ exports.videoDownload = async (urlYt, id, qualityVideo) => {
 }
 
 exports.mp3fromVideo = async (urlYt) => {
-
-    ytdl(urlYt, { filter: format => format.container === 'mp4' }, 'audioonly').pipe(fs.createWriteStream('video.mp3'));
+    ytdl(urlYt, { filter: format => format.container === 'mp4' }, 'audioonly').pipe(fs.createWriteStream(path.resolve("C:/" + "Users" + "/silas" + "/Downloads/" + "video.mp3")));
 
     return {message: "download realizado com sucesso!"};
 }
