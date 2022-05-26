@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
 
   durationInSeconds = 5;
 
+  msgError:any = "";
+
   formVideo = this.formBuilder.group({
 
     urlYt:['', Validators.required],
@@ -28,13 +30,12 @@ export class HomeComponent implements OnInit {
 
   videoId:any = '';
   fullUrl: string | null = '';
-  fullUrlview: SafeResourceUrl= "";
+  fullUrlview: SafeResourceUrl = "";
 
   constructor(private service: ServicesService,
               private formBuilder: FormBuilder,
               private _sanitizer: DomSanitizer,
               private _snackBar: MatSnackBar
-
               ) { }
 
   ngOnInit(): void {
@@ -56,16 +57,21 @@ export class HomeComponent implements OnInit {
     return this.fullUrlview
   }
 
-  video(){
+   video(){
     this.formVideo.controls['urlYt'].setValue(this.securefullurl())
     this.formVideo.controls['id'].setValue(this.videoId)
 
    this.service.downloadvideo(this.formVideo.value).subscribe(res=>{
-      console.log(this.formVideo.value)
+
+    this.msgError = res.message
+    if(this.msgError === "invalid ID"){
+        return this.popUp("ID invalido!")
+      }
+      if(res === "invalid URL"){
+        return this.popUp("Url invalido!")
+      }
       this.popUp("O Download foi iniciado!")
    }, err=>console.log(err))
  }
-
-
 
 }

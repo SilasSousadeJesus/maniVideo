@@ -1,9 +1,6 @@
 const videoRepository = require('../repositories/videoRepository');
 
-
-
 module.exports = class videoController {
-
 
     static async videoGet(req, res){ 
 
@@ -17,7 +14,7 @@ module.exports = class videoController {
 
     static async mp3get(req, res){
         try {
-            return   res.json( await videoRepository.mp3fromVideo(req.body.urlYt))
+            return   res.json( await videoRepository.mp3fromVideo(req.body.urlYt, req.body.id))
         } catch (error) {
             console.log(error);
         }
