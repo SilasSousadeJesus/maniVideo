@@ -6,7 +6,6 @@ const readline = require('readline');
 const path = require('path');
 const  { v4: uuidv4 } = require('uuid');
 
-
 exports.videoDownload = async (urlYt, id, qualityVideo) => {  
 
   const idCheck = ytdl.validateID(id);
@@ -14,12 +13,12 @@ exports.videoDownload = async (urlYt, id, qualityVideo) => {
     return {message: "invalid ID"}
   }
   const urlCheck =  ytdl.validateURL(urlYt);
-  console.log(urlYt)
   if(!urlCheck){
     return {message: "invalid URL"}
   }
 
   const videoName = await this.getInfor(id);
+
     const ref = urlYt;
     const tracker = {
         start: Date.now(),
@@ -110,9 +109,17 @@ exports.videoDownload = async (urlYt, id, qualityVideo) => {
     return {message: "download realizado com sucesso!"};
 }
 
-exports.mp3fromVideo = async (urlYt) => {
+exports.mp3fromVideo = async (urlYt, id) => {
 
-    //const mp3Name = await this.getInfor(id)
+  const idCheck = ytdl.validateID(id);
+  if(!idCheck){
+    return {message: "invalid ID"}
+  }
+  const urlCheck =  ytdl.validateURL(urlYt);
+  if(!urlCheck){
+    return {message: "invalid URL"}
+  }
+    
     const mp3Name = uuidv4()
 
     ytdl(urlYt, { filter: format => format.container === 'mp4' }, 'audioonly').pipe(fs.createWriteStream(`${mp3Name}.mp3`));
