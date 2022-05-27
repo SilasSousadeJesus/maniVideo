@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
 
   formMP3 = this.formBuilder.group({
 
-    urlYt:['', Validators.required]
+    urlYt:['', Validators.required],
+    id:['', Validators.required]
 
   })
 
@@ -70,8 +71,29 @@ export class HomeComponent implements OnInit {
       if(res === "invalid URL"){
         return this.popUp("Url invalido!")
       }
+
       this.popUp("O Download foi iniciado!")
    }, err=>console.log(err))
+ }
+
+ getMp3(){
+  this.formMP3.controls['urlYt'].setValue(this.securefullurl())
+  this.formMP3.controls['id'].setValue(this.videoId)
+
+   this.service.getaudio(this.formMP3.value).subscribe(res =>{
+
+    this.msgError = res.message
+    if(this.msgError === "invalid ID"){
+        return this.popUp("ID invalido!")
+     }
+      if(res === "invalid URL"){
+        return this.popUp("Url invalido!")
+     }
+
+
+  this.popUp("O Download foi iniciado!")
+
+   })
  }
 
 }

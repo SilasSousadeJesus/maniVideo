@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,17 @@ export class ServicesService {
               ) { }
 
   downloadvideo(videoInformation:string[]):Observable<any>{
+
+
     return this.http.post(`${this.url}/downloadVideo`, videoInformation)
+
+
+    // return this.http.post(fullUrl, body, {
+    //   responseType: 'blob',
+    //   headers: new HttpHeaders().append('Content-Type', 'application/json')
+    // })
+
+
   }
 
   getaudio(youtubeLink:string):Observable<any>{

@@ -34,7 +34,7 @@
                       <mat-option value="highestvideo">mp4 1080p</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <a mat-raised-button  href="#" class="btnUlr" type="submit" download="filename">Baixar</a>
+                  <button mat-raised-button  class="btnUlr" type="submit" >Baixar</button>
                 </mat-card-actions>
               </mat-card>
             </mat-card>
@@ -44,7 +44,35 @@
     </mat-tab>
 
      <!-- formulario de mp3 -->
-    <mat-tab label="Converter para MP3"></mat-tab>
+    <mat-tab label="Converter para MP3">
+
+
+      <form  fxLayout="row" fxLayoutAlign="center center" class="urlContainer"  >
+        <mat-form-field class="example-form-field" appearance="fill" >
+          <mat-label>Insira o ID do video</mat-label>
+          <input matInput type="text" [(ngModel)]="videoId" name="ulrLink">
+          <button *ngIf="videoId" matSuffix mat-icon-button aria-label="Clear" (click)="videoId=''" >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+    </form>
+
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <ng-container *ngIf="videoId"  >
+     <form [formGroup]="formVideo" (submit)="getMp3()">
+          <mat-card class="example-card">
+            <iframe width="460" height="315" [src]='securefullurlview()' id="inneriframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div fxLayout="row" fxLayoutAlign="end end">
+              <button mat-raised-button  class="btnUlr" type="submit">Baixar</button>
+            </div>
+          </mat-card>
+        </form>
+      </ng-container>
+    </div>
+
+
+    </mat-tab>
 
   </mat-tab-group>
 
