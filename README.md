@@ -15,7 +15,7 @@
 <div>
   <h2 > Overview da Aplicação</h2>
   <br>
-  <h3 >ManiVideo é Aplicação web que consiste possibilita baixar videos do youtube ou mesmo baixar apenas o audio em mp3 do video escolhido</h3>
+  <h3 >ManiVideo é Aplicação web que  possibilita baixar videos do youtube ou mesmo baixar apenas o audio em mp3 do video escolhido</h3>
   <br>
 
     
@@ -23,7 +23,7 @@
   <ul >
     <li>Estilização minimalista  com Angular Material</li>
     <li>Baixar video do youtube nos formatos 360p, 480p, 720p, 1080p</li>
-    <li>Baixar e Extrair somente o Audio do video em formato MP3</li>
+    <li> Extrair e Baixar somente o Audio do video em formato MP3</li>
     <li>Responsividade</li>    
   </ul>
 
