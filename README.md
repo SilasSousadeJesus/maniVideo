@@ -1,21 +1,13 @@
 <div align="center">
-  <img align="center"  src="" height="400">
   <h2>Baixe seu video favorito do YouTube</h2>
 </div>
 <br>
 <div>
-  <h2 align="center"> Clique no link para acessar a aplicação:  </h2>
-  <h3 align="center" >  deploy </h3>
-  <h2 align="center"> Clique no link para assistir o video da aplicação:  </h2>
-  <h3 align="center" > link para o youtube </h3>
-
-</div>
-<br>
-
-<div>
   <h2 > Overview da Aplicação</h2>
   <br>
-  <h3 >ManiVideo é Aplicação web que  possibilita baixar videos do youtube ou mesmo baixar apenas o audio em mp3 do video escolhido</h3>
+  <h3>
+  ManiVideo é Aplicação web que  possibilita baixar videos do youtube ou mesmo baixar apenas o audio em mp3 do video escolhido. A aplicação foi construida levando em consideração Design repository e SOLID. o back-end foi construindo com Nodejs e o Front-End com Angular.
+  </h3>
   <br>
 
     
@@ -23,8 +15,7 @@
   <ul >
     <li>Estilização minimalista  com Angular Material</li>
     <li>Baixar video do youtube nos formatos 360p, 480p, 720p, 1080p</li>
-    <li> Extrair e Baixar somente o Audio do video em formato MP3</li>
-    <li>Responsividade</li>    
+    <li> Extrair e Baixar somente o Audio do video em formato MP3</li>  
   </ul>
 
 </div>
