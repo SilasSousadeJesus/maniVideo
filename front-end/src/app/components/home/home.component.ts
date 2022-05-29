@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit {
 
   durationInSeconds = 5;
 
+  dataSource!:any[]
+  displayedColumns!:any
+
   msgError:any = "";
 
   formVideo = this.formBuilder.group({

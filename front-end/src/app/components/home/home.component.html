@@ -1,9 +1,43 @@
 <h1 fxLayout="row" fxLayoutAlign="center center" class="title">Baixe seu video preferido</h1>
 
   <mat-tab-group animationDuration="0ms" >
-    <!-- instruções -->
-    <mat-tab label="Instruções de uso"></mat-tab>
 
+    <!-- instruções -->
+    <mat-tab label="Instruções de uso">
+      <div  fxLayout="row" fxLayoutAlign="center center" >
+        <mat-card class="infoUse">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Copie o ID do video desejado</mat-card-title>
+            <mat-card-subtitle>ManiVideo</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/img/url.png" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p> ID define um identificador exclusivo  de cada video, sendo possivel a partir do ID localizar e trazer as informações do video em especifico.     </p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="infoUse marginImg">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Cole o ID do video no campo de busca.</mat-card-title>
+            <mat-card-subtitle>ManiVideo</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/img/urlbox.png" alt="Photo of a Shiba Inu">
+        </mat-card>
+
+        <mat-card class="infoUse marginImg">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Escolha a Qualidade Desejada.</mat-card-title>
+            <mat-card-subtitle>ManiVideo</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/img/Typeselect.png" alt="Photo of a Shiba Inu">
+        </mat-card>
+
+      </div>
+
+    </mat-tab>
       <!-- formulario de video -->
     <mat-tab label="Baixar Video">
       <form  fxLayout="row" fxLayoutAlign="center center" class="urlContainer"  >
@@ -42,7 +76,6 @@
         </ng-container>
       </div>
     </mat-tab>
-
      <!-- formulario de mp3 -->
     <mat-tab label="Converter para MP3">
 
@@ -75,7 +108,6 @@
     </mat-tab>
 
   </mat-tab-group>
-
 
 
 
